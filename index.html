@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="header">
+      <a href="#default" class="logo">To do list</a>
+      <a class="active" href="#home">Home</a>
+      <a href="#about">About</a>
+    </div>
+    <div class="list-heading">
+      <input type="text" id="textField" class="textField" />
+      <input
+        type="submit"
+        class="btnAddTask"
+        name="Add Item"
+        value="Add Task"
+        onclick="getInputValue()";
+      />
+    </div>
+    <div class="task-list">
+      <ul class="list-container" id="demo-list">
+        <li class="block" id="block1">
+          ToDo Task 01
+          <div class="listButtons">
+            <button class="btnAdd" id="btnAdd1" onclick="completeItem(id)">Done</button
+            ><button class="btnRemove1" id="btnRemove1" onclick="removeItem(id)">Remove</button>
+        
+          </div>
+        </li>
+        <li class="block" id="block2">
+          ToDo Task 02
+          <div class="listButtons" >
+          <button class="btnAdd" id="btnAdd2"  onclick="completeItem(id)">Done</button
+          ><button class="btnRemove2" id="btnRemove2" onclick="removeItem(id)">Remove</button></div></li>
+        </li>
+        <li class="block" id="block3">
+          ToDo Task 03           <div class="listButtons">
+            <button class="btnAdd" id="btnAdd3"  onclick="completeItem(id)">Done</button
+            ><button class="btnRemove3" id="btnRemove3" onclick="removeItem(id)">Remove</button></div>
+        </li>
+        <li class="block" id="block4">
+            ToDo Task 04           <div class="listButtons">
+              <button class="btnAdd" id="btnAdd4"  onclick="completeItem(id)">Done</button
+              ><button class="btnRemove4" id="btnRemove4" onclick="removeItem(id)">Remove</button></div>
+          </li>
+          <li class="block" id="block5">
+            ToDo Task 05           <div class="listButtons">
+              <button class="btnAdd" id="btnAdd5"  onclick="completeItem(id)">Done</button
+              ><button class="btnRemove5" id="btnRemove5" onclick="removeItem(id)">Remove</button></div>
+          </li>
+      </ul>
+    </div>
+    <script src="/script.js"></script>
+  </body>
+</html>
