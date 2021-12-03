@@ -1,9 +1,19 @@
 "use strict";
-const para = document.createElement("p");
-// let text = document.getElementById("").value;
-// console.log(text);
-let count = 5;
-function getInputValue() {
+
+let count = 0;
+//Gets current list and update the count of list items in global variable
+function getCurrentList() {
+  let myNodelist = document.getElementsByTagName("LI");
+
+  for (let i = 0; i < myNodelist.length; i++) {
+    console.log(myNodelist[i]);
+    count++;
+  }
+  console.log(count);
+}
+getCurrentList();
+
+function addNewItem() {
   count++;
   // Selecting the input element and get its value
   var inputVal = document.getElementById("textField").value;
@@ -31,7 +41,7 @@ function getInputValue() {
     createAddButton.innerHTML = "Done";
     document.getElementById("listButtons" + count).appendChild(createAddButton);
     // document.body.appendChild(createAddButton);
-    createAddButton.setAttribute("class", "btnAdd" + count);
+    createAddButton.setAttribute("class", "btnAdd");
     createAddButton.setAttribute("id", "btnAdd" + count);
     //Creating remove button under div
     var createRemoveButton = document.createElement("button");
@@ -39,32 +49,31 @@ function getInputValue() {
     document
       .getElementById("listButtons" + count)
       .appendChild(createRemoveButton);
-    createRemoveButton.setAttribute("class", "btnRemove" + count);
+    createRemoveButton.className = "btnRemove";
+    // createRemoveButton.setAttribute("class", "btnRemove");
     createRemoveButton.setAttribute("id", "btnRemove" + count);
     // createDiv.appendChild(document.createTextNode(inputVal));
     // createDiv.appendChild(entry);
   }
 }
 
-function removeItem(str) {
-  // document.getElementById("block").style.display = "none";
-  let value = str;
-  let size = value.length;
-  let result = value.charAt(size - 1);
-  console.log(result);
-  var element = document.getElementById("block" + result);
-  element.classList.add("hideElement");
-  // document.getElementById(block + result).style.visibility = "hidden";
-  // btn.style.display = "none";
+//removing an item from the current list
+let element = document.getElementsByClassName("btnRemove");
+for (let i = 0; i < element.length; i++) {
+  element[i].onclick = function () {
+    let item = this.parentElement.parentElement;
+    item.style.display = "none";
+  };
 }
-function completeItem(str) {
-  let value = str;
-  let size = value.length;
-  let result = value.charAt(size - 1);
-  console.log(result);
-  // var element = document.getElementById(str);
-  // element.classList.add("hideElement");
-  var container = document.getElementById("block" + result);
-  container.classList.add("complete");
-  document.getElementById("block" + result).textContent = "Task Completed";
+
+//completing an element from the to do list
+let completeElement = document.getElementsByClassName("btnAdd");
+for (let i = 0; i < completeElement.length; i++) {
+  completeElement[i].onclick = function () {
+    let item = this.parentElement;
+    this.style.display = "none";
+    let container = item.parentElement;
+    container.style.backgroundColor = "green";
+    container.append("Task Completed");
+  };
 }
