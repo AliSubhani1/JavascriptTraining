@@ -50,10 +50,23 @@ function addNewItem() {
     count++;
   }
 }
+// window.onload = function () {
+//   const storageTasks = localStorage.getItem("tasks");
+//   tasks = storageTasks ? JSON.parse(storageTasks) : [];
 
+//   const storangeTaskStatus = localStorage.getItem("taskStatus");
+//   taskStatus = storangeTaskStatus ? JSON.parse(storangeTaskStatus) : [];
+// };
+// init();
 window.onload = function () {
-  tasks = JSON.parse(localStorage.getItem("tasks"));
-  taskStatus = JSON.parse(localStorage.getItem("taskStatus"));
+  //tasks = JSON.parse(localStorage.getItem("tasks"));
+  const storageTasks = localStorage.getItem("tasks");
+  tasks = storageTasks ? JSON.parse(storageTasks) : [];
+
+  const storangeTaskStatus = localStorage.getItem("taskStatus");
+  taskStatus = storangeTaskStatus ? JSON.parse(storangeTaskStatus) : [];
+
+  // taskStatus = JSON.parse(localStorage.getItem("taskStatus"));
   for (let task = 0; task < tasks.length; task++) {
     // if (taskStatus[task] == true) {
     //   let item = this.parentElement;
@@ -73,7 +86,7 @@ window.onload = function () {
       let container = item.parentElement;
       container.style.backgroundColor = "green";
       container.append("Task Completed");
-      taskStatus[index] = true;
+      taskStatus[index] = "true";
       localStorage.setItem("taskStatus", taskStatus);
     };
     //Creating remove button under div
@@ -95,13 +108,12 @@ window.onload = function () {
       localStorage.setItem("taskStatus", JSON.stringify(taskStatus));
     };
   }
-  //}
 };
 
 //store new item name in local arrays and also set the items in local storage
 let storeItems = (str) => {
   tasks.push(str);
-  taskStatus.push(false);
+  taskStatus.push("false");
   localStorage.setItem("tasks", JSON.stringify(tasks));
   localStorage.setItem("taskStatus", JSON.stringify(taskStatus));
 };
@@ -161,7 +173,7 @@ let clickDoneBtn = (self, taskName) => {
   let container = item.parentElement;
   container.style.backgroundColor = "green";
   container.append("Task Completed");
-  taskStatus[index] = true;
+  taskStatus[index] = "true";
   localStorage.setItem("taskStatus", taskStatus);
   console.log(index);
 };
