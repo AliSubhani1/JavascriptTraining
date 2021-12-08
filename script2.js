@@ -68,27 +68,34 @@ window.onload = function () {
 
   // taskStatus = JSON.parse(localStorage.getItem("taskStatus"));
   for (let task = 0; task < tasks.length; task++) {
-    // if (taskStatus[task] == true) {
+    // if (taskStatus[task] == "true") {
     //   let item = this.parentElement;
-    //   this.style.display = "none";
+    //   //this.style.display = "none";
     //   let container = item.parentElement;
     //   container.style.backgroundColor = "green";
     //   container.append("Task Completed");
+    //   console.log("value=", taskStatus[task]);
     // } else {
     count++;
-    createListItemWithDiv(tasks[task]);
-    var createAddButton = document.createElement("BUTTON");
-    createDoneBtn(createAddButton);
-    createAddButton.onclick = function () {
-      let index = tasks.indexOf(tasks[task]);
-      let item = this.parentElement;
-      this.style.display = "none";
-      let container = item.parentElement;
-      container.style.backgroundColor = "green";
-      container.append("Task Completed");
-      taskStatus[index] = "true";
-      localStorage.setItem("taskStatus", taskStatus);
-    };
+    if (taskStatus[task] == "true") {
+      createListItemWithDiv("Task Completed");
+    } else {
+      createListItemWithDiv(tasks[task]);
+      var createAddButton = document.createElement("BUTTON");
+      createDoneBtn(createAddButton);
+      createAddButton.onclick = function () {
+        let index = tasks.indexOf(tasks[task]);
+        let item = this.parentElement;
+        this.style.display = "none";
+        let container = item.parentElement;
+        //container.style.backgroundColor = "green";
+        //container.innerHTML = "Task Completed";
+        container.append("Task Completed");
+        taskStatus[index] = "true";
+        localStorage.setItem("taskStatus", JSON.stringify(taskStatus));
+      };
+    }
+
     //Creating remove button under div
     var createRemoveButton = document.createElement("button");
 
@@ -108,6 +115,7 @@ window.onload = function () {
       localStorage.setItem("taskStatus", JSON.stringify(taskStatus));
     };
   }
+  //}
 };
 
 //store new item name in local arrays and also set the items in local storage
@@ -134,6 +142,7 @@ let createListItemWithDiv = (inputVal) => {
 
   //creating a div under list item
   var createDiv = document.createElement("div");
+
   document.getElementById("block" + count).appendChild(createDiv);
 
   //Assigning class and id to div item
@@ -171,10 +180,11 @@ let clickDoneBtn = (self, taskName) => {
   let item = self.parentElement;
   self.style.display = "none";
   let container = item.parentElement;
-  container.style.backgroundColor = "green";
+  //container.style.backgroundColor = "green";
+  //container.innerHTML = "Task Completed";
   container.append("Task Completed");
-  taskStatus[index] = "true";
-  localStorage.setItem("taskStatus", taskStatus);
+  taskStatus[index] = "true"; //----------------------
+  localStorage.setItem("taskStatus", JSON.stringify(taskStatus)); //----------------------
   console.log(index);
 };
 
