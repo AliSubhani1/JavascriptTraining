@@ -1,0 +1,62 @@
+body {
+  margin-left: 0;
+}
+.hideElement {
+  display: none;
+}
+.header {
+  background-color: darkblue;
+  display: flex;
+  flex-direction: row;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+a {
+  color: white;
+  text-decoration: none;
+  padding-left: 20px;
+}
+a:hover {
+  background-color: red;
+  padding: 10px;
+}
+.list-heading {
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 40px;
+}
+.list-heading > textField {
+  width: 400px;
+}
+.textField {
+  width: 300px;
+}
+.btnAddTask {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.task-list {
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+.task-list > ul {
+  list-style-type: none;
+}
+.list-container > li {
+  margin-bottom: 10px;
+  background-color: grey;
+  padding: 20px;
+  /* display: flex;
+  flex-direction: row; */
+}
+.complete {
+  background-color: green;
+  /* text-decoration: line-through; */
+}
+.listButtons {
+  display: flex;
+  justify-content: end;
+}
